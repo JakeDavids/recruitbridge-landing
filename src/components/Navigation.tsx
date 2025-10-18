@@ -137,22 +137,12 @@ export function Navigation() {
                 />
               </motion.div>
 
-              <div className="flex flex-col">
-                <span
-                  className="text-white"
-                  style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
-                >
-                  RecruitBridge
-                </span>
-                <motion.span
-                  className="text-[#F9B233] text-xs font-semibold tracking-wider"
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  YOUR PATH TO PLAY
-                </motion.span>
-              </div>
+              <span
+                className="text-white"
+                style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
+              >
+                RecruitBridge
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}

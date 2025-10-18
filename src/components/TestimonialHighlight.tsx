@@ -118,7 +118,7 @@ export function TestimonialHighlight() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              "RecruitBridge helped me reach over 80 college coaches and land 20+ offers — it completely changed my recruiting process."
+              "RecruitBridge helped me reach over 80 college coaches and land 35+ offers — it completely changed my recruiting process."
             </motion.blockquote>
 
             {/* Author */}
@@ -130,21 +130,39 @@ export function TestimonialHighlight() {
             >
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#C9A24E] to-[#F9B233] p-1 shadow-xl overflow-hidden">
                 <div className="w-full h-full rounded-full overflow-hidden">
-                  <img 
-                    src={calebImage} 
-                    alt="Caleb Irving" 
+                  <img
+                    src={calebImage}
+                    alt="Caleb Mitchell Irving"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
               <div>
                 <div className="text-white" style={{ fontSize: '1.125rem', fontWeight: 700 }}>
-                  Caleb Irving
+                  Caleb Mitchell Irving
                 </div>
                 <div className="text-white/80" style={{ fontSize: '0.9375rem' }}>
-                  D-Lineman • Class of 2028
+                  ⭐⭐⭐ 3-Star DE • Committed to Purdue
                 </div>
               </div>
+            </motion.div>
+
+            {/* Real recruiting stats */}
+            <motion.div
+              className="mt-6 flex flex-wrap gap-2"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-xs font-semibold border border-white/20">
+                #74 DL Nationally (247Sports)
+              </span>
+              <span className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-xs font-semibold border border-white/20">
+                #121 in Texas
+              </span>
+              <span className="px-3 py-1 bg-[#F9B233]/20 backdrop-blur-sm rounded-full text-[#F9B233] text-xs font-semibold border border-[#F9B233]/40">
+                Offers: Texas, Michigan, Oregon, Tennessee, Oklahoma +30 more
+              </span>
             </motion.div>
 
             {/* Stats row */}
@@ -156,8 +174,8 @@ export function TestimonialHighlight() {
             >
               {[
                 { label: 'Coaches Reached', value: '86' },
-                { label: 'Emails Sent', value: '3,000+' },
-                { label: 'Offers', value: '20+' },
+                { label: 'Total Offers', value: '35+' },
+                { label: 'Committed', value: 'Purdue' },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

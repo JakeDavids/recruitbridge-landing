@@ -1,12 +1,33 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
   const footerLinks = {
-    Product: ['How It Works', 'Features', 'Pricing', 'FAQ'],
-    Athletes: ['Build Profile', 'Find Coaches', 'Success Stories', 'Resources'],
-    Parents: ['Why Trust Us', 'Safety & Privacy', 'Support', 'Testimonials'],
-    Company: ['About Us', 'Careers', 'Contact', 'Blog'],
+    Product: [
+      { name: 'How It Works', href: '/#how-it-works' },
+      { name: 'Features', href: '/#features' },
+      { name: 'Pricing', href: '/#pricing' },
+      { name: 'FAQ', href: '/contact' }
+    ],
+    Athletes: [
+      { name: 'Build Profile', href: 'https://www.recruitbridge.app/' },
+      { name: 'Find Coaches', href: 'https://www.recruitbridge.app/' },
+      { name: 'Success Stories', href: '/blog' },
+      { name: 'Resources', href: '/blog' }
+    ],
+    Parents: [
+      { name: 'Why Trust Us', href: '/about' },
+      { name: 'Safety & Privacy', href: '/privacy' },
+      { name: 'Support', href: '/contact' },
+      { name: 'Testimonials', href: '/#testimonials' }
+    ],
+    Company: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Contact', href: '/contact' },
+      { name: 'Blog', href: '/blog' }
+    ],
   };
 
   const socialLinks = [
@@ -100,15 +121,27 @@ export function Footer() {
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <motion.a
-                      href="#"
-                      className="text-white/70 hover:text-[#F9B233] transition-colors duration-300 inline-block"
-                      style={{ fontSize: '0.875rem' }}
-                      whileHover={{ x: 3 }}
-                    >
-                      {link}
-                    </motion.a>
+                  <li key={link.name}>
+                    {link.href.startsWith('http') ? (
+                      <motion.a
+                        href={link.href}
+                        className="text-white/70 hover:text-[#F9B233] transition-colors duration-300 inline-block"
+                        style={{ fontSize: '0.875rem' }}
+                        whileHover={{ x: 3 }}
+                      >
+                        {link.name}
+                      </motion.a>
+                    ) : (
+                      <Link to={link.href}>
+                        <motion.span
+                          className="text-white/70 hover:text-[#F9B233] transition-colors duration-300 inline-block"
+                          style={{ fontSize: '0.875rem' }}
+                          whileHover={{ x: 3 }}
+                        >
+                          {link.name}
+                        </motion.span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -123,17 +156,21 @@ export function Footer() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-8">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
-              <motion.a
-                key={link}
-                href="#"
-                className="text-white/60 hover:text-[#F9B233] transition-colors duration-300 relative group"
-                style={{ fontSize: '0.875rem' }}
-                whileHover={{ y: -2 }}
-              >
-                {link}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F9B233] group-hover:w-full transition-all duration-300" />
-              </motion.a>
+            {[
+              { name: 'Privacy Policy', href: '/privacy' },
+              { name: 'Terms of Service', href: '/terms' },
+              { name: 'Contact Us', href: '/contact' }
+            ].map((link) => (
+              <Link key={link.name} to={link.href}>
+                <motion.span
+                  className="text-white/60 hover:text-[#F9B233] transition-colors duration-300 relative group inline-block"
+                  style={{ fontSize: '0.875rem' }}
+                  whileHover={{ y: -2 }}
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F9B233] group-hover:w-full transition-all duration-300" />
+                </motion.span>
+              </Link>
             ))}
           </div>
         </div>
