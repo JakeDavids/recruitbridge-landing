@@ -22,10 +22,10 @@ const testimonials = [
     image: 'https://images.unsplash.com/photo-1759022484952-6b5cab43a99e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdoJTIwc2Nob29sJTIwZm9vdGJhbGwlMjBwbGF5ZXIlMjBhY3Rpb258ZW58MXx8fHwxNzYwNTgxNDIwfDA&ixlib=rb-4.1.0&q=80&w=1080',
   },
   {
-    name: 'Jordan Williams',
-    role: 'Wide Receiver • Class of 2027',
-    quote: 'As a JUCO transfer, finding the right D1 program felt impossible. RecruitBridge connected me with 50+ coaches and I landed 12 offers. Now I\'m playing at the next level.',
-    image: 'https://images.unsplash.com/photo-1758506971667-fbaa8942258a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdGhsZXRlJTIwcnVubmluZyUyMGRldGVybWluYXRpb258ZW58MXx8fHwxNzYwNTgxNDIxfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    name: 'Cash Topinka',
+    role: 'Defensive Lineman • Now at Hampden-Sydney College',
+    quote: 'RecruitBridge was a game-changer for me. Coming out of high school as a 3-year varsity starter and 3-year all-conference player, I had multiple D2 offers and D1 PWOs, but finding the right fit was overwhelming. RecruitBridge helped me connect with the right coaches and showcase my film. Now I\'m a freshman All-American and have started all 15 collegiate games at Hampden-Sydney. The platform gave me the tools to take control of my recruiting journey.',
+    image: '/assets/cash-topinka.jpg',
   },
   {
     name: 'Tyler Brooks',
