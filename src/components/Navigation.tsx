@@ -14,10 +14,6 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const lastMousePos = useRef({ x: 0, y: 0 });
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -52,33 +48,6 @@ export function Navigation() {
     }
   };
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    lastMousePos.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDragging) {
-      const deltaX = e.clientX - lastMousePos.current.x;
-      const deltaY = e.clientY - lastMousePos.current.y;
-      
-      setRotation(prev => ({
-        x: prev.x - deltaY * 0.5,
-        y: prev.y + deltaX * 0.5,
-      }));
-      
-      lastMousePos.current = { x: e.clientX, y: e.clientY };
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
   return (
     <>
       <motion.nav
@@ -98,88 +67,92 @@ export function Navigation() {
             <motion.a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                ref={logoRef}
-                className="relative h-10 w-10 cursor-grab active:cursor-grabbing"
-                style={{
-                  perspective: '1000px',
-                  filter: 'drop-shadow(0 0 10px rgba(0, 91, 234, 0.3))',
-                }}
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                animate={{
-                  rotateX: rotation.x,
-                  rotateY: rotation.y,
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 100,
-                  damping: 20,
-                }}
+                className="relative h-12 w-12"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
               >
-                {/* Front face */}
+                {/* Animated rings */}
                 <motion.div
-                  className="absolute inset-0"
+                  className="absolute inset-0 rounded-full border-2 border-[#005BEA]/40"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.2, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-[#F9B233]/40"
+                  animate={{
+                    scale: [1.2, 1, 1.2],
+                    opacity: [0.2, 0.5, 0.2],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 1,
+                  }}
+                />
+
+                {/* Logo with enhanced glow */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
                   style={{
-                    transformStyle: 'preserve-3d',
-                    backfaceVisibility: 'hidden',
+                    filter: 'drop-shadow(0 0 12px rgba(0, 91, 234, 0.6))',
                   }}
                 >
                   <img
                     src={logoImage}
                     alt="RecruitBridge"
-                    className="h-10 w-10 object-contain"
+                    className="h-10 w-10 object-contain relative z-10"
                     draggable={false}
                   />
                 </motion.div>
-                
-                {/* Back face */}
+
+                {/* Pulsing background glow */}
                 <motion.div
-                  className="absolute inset-0"
+                  className="absolute inset-0 rounded-full blur-2xl"
                   style={{
-                    transformStyle: 'preserve-3d',
-                    backfaceVisibility: 'hidden',
-                    transform: 'rotateY(180deg)',
-                  }}
-                >
-                  <img
-                    src={logoImage}
-                    alt="RecruitBridge"
-                    className="h-10 w-10 object-contain opacity-70"
-                    draggable={false}
-                  />
-                </motion.div>
-                
-                {/* Glow effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-full blur-xl"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(0, 91, 234, 0.6) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, rgba(0, 91, 234, 0.4) 0%, rgba(249, 178, 51, 0.2) 50%, transparent 70%)',
                     zIndex: -1,
                   }}
                   animate={{
-                    opacity: isDragging ? [0.4, 0.8, 0.4] : 0.3,
-                    scale: isDragging ? [1, 1.2, 1] : 1,
+                    scale: [1, 1.3, 1],
+                    opacity: [0.6, 0.3, 0.6],
                   }}
                   transition={{
-                    duration: 1.5,
+                    duration: 2,
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
                 />
               </motion.div>
-              <span 
-                className="text-white"
-                style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
-              >
-                RecruitBridge
-              </span>
+
+              <div className="flex flex-col">
+                <span
+                  className="text-white"
+                  style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em' }}
+                >
+                  RecruitBridge
+                </span>
+                <motion.span
+                  className="text-[#F9B233] text-xs font-semibold tracking-wider"
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  YOUR PATH TO PLAY
+                </motion.span>
+              </div>
             </motion.a>
 
             {/* Desktop Navigation */}

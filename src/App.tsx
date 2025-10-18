@@ -8,6 +8,7 @@ import { AffordablePricing } from './components/AffordablePricing';
 import { Testimonials } from './components/Testimonials';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useEffect } from 'react';
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
       <Testimonials />
       <FinalCTA />
       <Footer />
+      <SpeedInsights />
     </div>
   );
 }
