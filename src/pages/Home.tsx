@@ -21,7 +21,6 @@ export default function Home() {
     <>
       <HeroSection />
       <HowItWorks />
-      <TestimonialHighlight />
       <ForAthletes />
       <ForParents />
       <AffordablePricing />
