@@ -56,7 +56,7 @@ export function HeroSection() {
           </motion.button>
         </motion.div>
 
-        {/* Stats Bar */}
+        {/* Proof Bar */}
         <motion.div
           className="mt-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
           initial={{ opacity: 0, y: 30 }}
@@ -67,22 +67,22 @@ export function HeroSection() {
             <div className="flex items-center gap-3">
               <Users className="w-6 h-6 text-[#FF6B24]" />
               <div>
-                <div className="text-2xl font-bold">1,200+</div>
-                <div className="text-sm text-blue-200">Active Athletes</div>
+                <div className="text-2xl font-bold">Built by a D1 athlete</div>
+                <div className="text-sm text-blue-200">at UNC Charlotte</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <TrendingUp className="w-6 h-6 text-[#FF6B24]" />
               <div>
-                <div className="text-2xl font-bold">87%</div>
-                <div className="text-sm text-blue-200">Response Rate</div>
+                <div className="text-2xl font-bold">14-day</div>
+                <div className="text-sm text-blue-200">money-back guarantee</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Award className="w-6 h-6 text-[#FF6B24]" />
               <div>
-                <div className="text-2xl font-bold">350+</div>
-                <div className="text-sm text-blue-200">Offers Extended</div>
+                <div className="text-2xl font-bold">Secure checkout</div>
+                <div className="text-sm text-blue-200">by Stripe</div>
               </div>
             </div>
           </div>
